@@ -6,9 +6,256 @@
 <title>TET-1 અભ્યાસ સાથી</title>
 <style>
 :root{font-family:system-ui,"Noto Sans Gujarati",sans-serif;color:#172033;background:#f5f7fb;font-synthesis:none}*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #e5e9f2;padding:18px max(18px,calc((100% - 900px)/2));position:sticky;top:0;z-index:2}h1{font-size:1.35rem;margin:0}header p{margin:4px 0 0;color:#68738a;font-size:.9rem}.wrap{max-width:900px;margin:auto;padding:18px}.stats,.subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:white;border:1px solid #e5e9f2;border-radius:16px;padding:15px}.stat strong{font-size:1.5rem;display:block}.muted{color:#68738a;font-size:.86rem}.bar{height:9px;background:#edf0f6;border-radius:20px;overflow:hidden;margin-top:9px}.bar i{display:block;height:100%;background:#5368d8;border-radius:20px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}.toolbar input,.toolbar select,button{font:inherit;border:1px solid #dce2ed;border-radius:10px;padding:10px;background:#fff;color:inherit}.toolbar input{flex:1;min-width:150px}.subject{cursor:pointer;text-align:left;width:100%}.subject.active{border-color:#5368d8;box-shadow:0 0 0 2px #5368d81c}.subject h3{margin:0 0 5px;font-size:1rem}.subject .muted{display:block}.topics{margin-top:14px}.topic{display:flex;gap:12px;align-items:flex-start;padding:13px 4px;border-bottom:1px solid #edf0f5}.topic input{width:20px;height:20px;accent-color:#5368d8;flex:none;margin:1px 0 0}.topic label{line-height:1.55;flex:1}.topic.done label{color:#8992a3;text-decoration:line-through}.section-title{display:flex;justify-content:space-between;align-items:center;gap:8px}.section-title h2{font-size:1.12rem}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{font-size:.86rem}.empty{text-align:center;padding:30px;color:#68738a}.foot{font-size:.8rem;color:#778198;text-align:center;padding:25px 8px}@media(min-width:650px){.stats{grid-template-columns:repeat(3,1fr)}.subjects{grid-template-columns:repeat(3,1fr)}}@media(max-width:380px){.wrap{padding:12px}.card{padding:12px}}
+
+header .headrow{max-width:900px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.nav-icon{width:44px;height:44px;display:grid;place-items:center;padding:0;border-radius:13px;font-size:1.25rem;background:#eef1ff;border:1px solid #d9defb;cursor:pointer;flex:none}
+.nav-icon:focus-visible,.close-syllabus:focus-visible,summary:focus-visible{outline:3px solid #8b9aff;outline-offset:3px}
+.syllabus-panel{margin-bottom:18px;scroll-margin-top:100px}
+.syllabus-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.syllabus-head h2{margin:0 0 6px;font-size:1.2rem}
+.syllabus-head p{margin:0}
+.close-syllabus{font:inherit;border:1px solid #dce2ed;border-radius:10px;padding:8px 11px;background:#fff;color:inherit;white-space:nowrap}
+.pattern-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}
+.pattern-cell{background:#f7f8fc;border:1px solid #e8ebf3;border-radius:12px;padding:11px}
+.pattern-cell strong{display:block;font-size:1.1rem}
+.pattern-cell span{display:block;color:#68738a;font-size:.82rem;margin-top:2px}
+.pattern-table{width:100%;border-collapse:collapse;font-size:.91rem;margin:10px 0 12px}
+.pattern-table th,.pattern-table td{border-bottom:1px solid #e9edf4;padding:10px 7px;text-align:left;vertical-align:top}
+.pattern-table th{color:#59657c;font-weight:650;background:#fafbfe}
+.pattern-table td:nth-child(2),.pattern-table td:nth-child(3){white-space:nowrap}
+.syllabus-item{border:1px solid #e6eaf2;border-radius:13px;margin:10px 0;background:#fff;overflow:hidden}
+.syllabus-item summary{padding:14px 15px;cursor:pointer;font-weight:700;line-height:1.45}
+.syllabus-body{padding:0 15px 15px;line-height:1.75;color:#344057}
+.syllabus-body h4{margin:12px 0 5px;color:#202b42}
+.syllabus-body ul{padding-left:20px;margin:6px 0}
+.syllabus-body li{margin:4px 0}
+.syllabus-note{background:#f6f8ff;border:1px solid #e0e6ff;border-radius:12px;padding:12px;margin:12px 0;line-height:1.65}
+.source-links{display:flex;flex-wrap:wrap;gap:12px;font-size:.88rem}
+.source-links a{color:#465cc5}
+@media(min-width:650px){.pattern-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:430px){.pattern-table{font-size:.82rem}.pattern-table th,.pattern-table td{padding:8px 5px}.syllabus-head{align-items:center}}
+
 </style></head>
-<body><header><h1>📚 TET-1 અભ્યાસ સાથી</h1><p>ગુજરાત શિક્ષક પાત્રતા પરીક્ષા · તમારી તૈયારી, તમારી પ્રગતિ</p></header>
-<main class="wrap"><section class="stats"><div class="card stat"><span class="muted">કુલ પ્રગતિ</span><strong id="percent">0%</strong><div class="bar"><i id="overallbar" style="width:0%"></i></div></div><div class="card stat"><span class="muted">પૂર્ણ કરેલા મુદ્દા</span><strong id="completed">0 / 0</strong></div><div class="card stat"><span class="muted">બાકી મુદ્દા</span><strong id="remaining">0</strong></div></section>
+<body><header><div class="headrow"><div><h1>📚 TET-1 અભ્યાસ સાથી</h1><p>ગુજરાત શિક્ષક પાત્રતા પરીક્ષા · તમારી તૈયારી, તમારી પ્રગતિ</p></div><button id="syllabusToggle" class="nav-icon" type="button" title="સિલેબસ અને પેપર પેટર્ન" aria-label="સિલેબસ અને પેપર પેટર્ન" aria-expanded="false">📖</button></div></header>
+<main class="wrap">
+
+<section id="syllabusPanel" class="card syllabus-panel" hidden aria-labelledby="syllabusTitle">
+  <div class="syllabus-head">
+    <div>
+      <h2 id="syllabusTitle">TET-1 પેપર પેટર્ન અને વિગતવાર અભ્યાસક્રમ</h2>
+      <p class="muted">ધોરણ ૧ થી ૫ માટેની ગુજરાત શિક્ષક યોગ્યતા કસોટી</p>
+    </div>
+    <button id="closeSyllabus" class="close-syllabus" type="button">બંધ કરો</button>
+  </div>
+  <div class="syllabus-note"><strong>મહત્ત્વની નોંધ:</strong> આ વિભાગ ગુજરાત સરકારના શિક્ષણ વિભાગના તા. ૦૮/૧૦/૨૦૨૪ના વિગતવાર અભ્યાસક્રમ ઠરાવ અને રાજ્ય પરીક્ષા બોર્ડના TET-I-2025 જાહેરનામા પ્રમાણે તૈયાર કર્યો છે. નવી પરીક્ષાનું જાહેરનામું અથવા સુધારો બહાર પડે તો તેની સૂચનાઓને અંતિમ માનવી.</div>
+
+  <h3>પેપર પેટર્ન</h3>
+  <div class="pattern-grid">
+    <div class="pattern-cell"><strong>૧૫૦</strong><span>કુલ પ્રશ્નો</span></div>
+    <div class="pattern-cell"><strong>૧૫૦</strong><span>કુલ ગુણ</span></div>
+    <div class="pattern-cell"><strong>૧૨૦ મિનિટ</strong><span>કુલ સમય</span></div>
+    <div class="pattern-cell"><strong>૦.૦૦</strong><span>ખોટા જવાબ માટે નેગેટિવ માર્કિંગ નહીં</span></div>
+  </div>
+  <table class="pattern-table">
+    <thead><tr><th>વિભાગ</th><th>વિષય</th><th>પ્રશ્નો / ગુણ</th></tr></thead>
+    <tbody>
+      <tr><td>૧</td><td>બાળ વિકાસ અને શૈક્ષણિક શાસ્ત્ર</td><td>૩૦</td></tr>
+      <tr><td>૨</td><td>ગુજરાતી ભાષા</td><td>૩૦</td></tr>
+      <tr><td>૩</td><td>અંગ્રેજી ભાષા</td><td>૩૦</td></tr>
+      <tr><td>૪</td><td>ગણિત</td><td>૩૦</td></tr>
+      <tr><td>૫</td><td>પર્યાવરણ, સામાન્ય જ્ઞાન અને શિક્ષણના વર્તમાન પ્રવાહો</td><td>૩૦</td></tr>
+      <tr><th colspan="2">કુલ</th><th>૧૫૦</th></tr>
+    </tbody>
+  </table>
+  <ul class="muted">
+    <li>પરીક્ષા બહુવિકલ્પીય પ્રશ્નો (MCQ) આધારિત એક જ પ્રશ્નપત્રમાં લેવામાં આવે છે.</li>
+    <li>દરેક પ્રશ્ન ૧ ગુણનો હોય છે. દરેક પ્રશ્નમાં ચાર વિકલ્પમાંથી એક યોગ્ય વિકલ્પ પસંદ કરવાનો રહે છે.</li>
+    <li>તમામ પ્રશ્નો ફરજિયાત છે. ખોટા જવાબ માટે ગુણ કપાતા નથી.</li>
+    <li>જાહેરનામામાં ગુજરાતી, અંગ્રેજી અને હિન્દી માધ્યમની જોગવાઈ છે. અહીં અભ્યાસક્રમ ગુજરાતી ભાષામાં સમજાવ્યો છે.</li>
+    <li>૧૨૦ મિનિટમાં ૧૫૦ પ્રશ્નો એટલે સરેરાશ આશરે ૪૮ સેકન્ડ પ્રતિ પ્રશ્ન. સમયની વહેંચણી માટે આ ગણતરી ઉપયોગી છે.</li>
+  </ul>
+
+  <h3>વિગતવાર અભ્યાસક્રમ</h3>
+  <p class="muted">દરેક વિભાગ ખોલીને પેટાવિષયો વાંચો. સત્તાવાર ઠરાવમાં જણાવેલ મુદ્દાઓ સાથે તૈયારી સરળ બને તે માટે સંબંધિત અભ્યાસ મુદ્દાઓ પણ વિસ્તૃત રીતે સમજાવ્યા છે.</p>
+
+  <details class="syllabus-item">
+    <summary>વિભાગ ૧ — બાળ વિકાસ અને શૈક્ષણિક શાસ્ત્ર (૩૦ ગુણ)</summary>
+    <div class="syllabus-body">
+      <h4>અ. બાળ વિકાસ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li><strong>વિકાસનો અર્થ અને અધ્યયન સાથેનો સંબંધ:</strong> વૃદ્ધિ અને વિકાસ વચ્ચેનો તફાવત, વિકાસની સતત અને ક્રમબદ્ધ પ્રક્રિયા, વિકાસના વ્યક્તિગત તફાવતો અને શીખવાની તૈયારી પર તેની અસર.</li>
+        <li><strong>વિકાસના તબક્કા અને સિદ્ધાંતો:</strong> શારીરિક, જ્ઞાનાત્મક, ભાષાકીય, સામાજિક, ભાવનાત્મક અને નૈતિક વિકાસ; વિકાસના સામાન્ય સિદ્ધાંતો અને દરેક તબક્કાની વિશેષતાઓ.</li>
+        <li><strong>વિકાસને અસર કરતા પરિબળો:</strong> વારસો અને વાતાવરણ, કુટુંબ, શાળા, મિત્રો, સમાજ, પોષણ, આરોગ્ય અને સાંસ્કૃતિક પરિસ્થિતિઓની ભૂમિકા.</li>
+        <li><strong>સામાજિક વિકાસ અને સામાજિકીકરણ:</strong> બાળકનું સામાજિક જગત; માતા-પિતા, વાલી, શિક્ષક અને સહપાઠીઓની અસર; સહકાર, જૂથમાં કામ, નિયમો અને સામાજિક જવાબદારી.</li>
+        <li><strong>વિચારકો અને શૈક્ષણિક અર્થઘટન:</strong> એરિક્સનના મનોસામાજિક વિકાસના વિચારો, મોન્ટેસરીની સ્વતંત્ર પ્રવૃત્તિ, ફ્રોબેલના રમત આધારિત શિક્ષણ અને કોલબર્ગના નૈતિક વિકાસના તબક્કાઓ; તેમના વર્ગખંડમાં ઉપયોગ.</li>
+        <li><strong>બાળકેન્દ્રિત અને પ્રગતિશીલ શિક્ષણ:</strong> બાળકની જરૂરિયાત, રસ, અનુભવ અને ગતિને કેન્દ્રમાં રાખતું શિક્ષણ; અનુભવ દ્વારા શીખવું, પ્રવૃત્તિ, શોધ અને સહભાગિતા.</li>
+        <li><strong>બુદ્ધિ અને બહુઆયામી બુદ્ધિ:</strong> બુદ્ધિનો અર્થ, બુદ્ધિ અંગેના વિવિધ અભિગમ, હાવર્ડ ગાર્ડનરની બહુવિધ બુદ્ધિની સંકલ્પના અને વર્ગખંડમાં વિવિધ ક્ષમતાઓને તક આપવી.</li>
+        <li><strong>ભાષા અને વિચાર:</strong> ભાષા વિકાસ, વિચાર પ્રક્રિયા, શબ્દભંડોળ અને સંવાદનો જ્ઞાનાત્મક વિકાસ સાથેનો સંબંધ.</li>
+        <li><strong>લિંગ અને સમાનતા:</strong> લિંગ એક સામાજિક રચના તરીકે, લિંગભૂમિકા, પૂર્વગ્રહ, ભેદભાવ અને શિક્ષણમાં સમાન તક તથા સંવેદનશીલ વર્તન.</li>
+        <li><strong>વ્યક્તિગત ભિન્નતા:</strong> ભાષા, જાતિ, લિંગ, સમુદાય, ધર્મ, આર્થિક સ્થિતિ, રસ, ક્ષમતા અને શીખવાની ગતિમાં તફાવત; દરેક બાળકને યોગ્ય સહાય.</li>
+        <li><strong>મૂલ્યાંકન:</strong> અધ્યયનનું મૂલ્યાંકન અને અધ્યયન માટેનું મૂલ્યાંકન, શાળાકીય મૂલ્યાંકન, સતત અને સર્વગ્રાહી મૂલ્યાંકન (CCE), અવલોકન અને પ્રતિસાદ.</li>
+        <li><strong>વર્ગખંડમાં પ્રશ્નરચના:</strong> પૂર્વજ્ઞાન અને તૈયારી ઓળખતા પ્રશ્નો, સમજણ અને તર્કશક્તિ વિકસાવતા પ્રશ્નો, વિવેચનાત્મક વિચાર તથા અધ્યયન સિદ્ધિનું મૂલ્યાંકન.</li>
+      </ul>
+      <h4>બ. સમાવેશી શિક્ષણ અને વિશેષ જરૂરિયાત ધરાવતા બાળકો — ૫ પ્રશ્નો / ૫ ગુણ</h4>
+      <ul>
+        <li>સમાવેશી શિક્ષણનો અર્થ, હેતુ, સમાન તક અને ભેદભાવરહિત વર્ગખંડ.</li>
+        <li>આર્થિક-સામાજિક રીતે પછાત, વંચિત, ભાષાકીય રીતે વિવિધ અને અલગ સામાજિક પરિસ્થિતિ ધરાવતા બાળકોનું સમાવીકરણ.</li>
+        <li>અધ્યયન અક્ષમતા ધરાવતા બાળકોની ઓળખ અને સહાય: વાંચન, લેખન અથવા ગણતરીમાં સતત મુશ્કેલી; બાળકને લેબલ લગાવ્યા વિના યોગ્ય શૈક્ષણિક સહાય.</li>
+        <li>વિવિધ દિવ્યાંગતા ધરાવતા બાળકોની શૈક્ષણિક જરૂરિયાતો; સુલભ શૈક્ષણિક સામગ્રી, સરળ સૂચનાઓ, સહાયક સાધનો અને જરૂરી અનુકૂલન.</li>
+        <li>સમાવેશી શિક્ષકની ભૂમિકા: ધીરજ, સકારાત્મક અપેક્ષા, સહપાઠી સહયોગ, વાલી સાથે સંવાદ અને વ્યક્તિગત પ્રગતિનું અવલોકન.</li>
+      </ul>
+      <h4>ક. અધ્યયન અને શૈક્ષણિક શાસ્ત્ર — ૧૦ પ્રશ્નો / ૧૦ ગુણ</h4>
+      <ul>
+        <li>બાળકો કેવી રીતે વિચારે છે, શીખે છે અને અગાઉના અનુભવના આધારે નવી સમજ બનાવે છે; શાળાની સિદ્ધિને અસર કરતા કારણો.</li>
+        <li>અધ્યયન-અધ્યાપનની પાયાની પ્રક્રિયા, શીખવાની વ્યૂહરચનાઓ, સામાજિક પ્રવૃત્તિ તરીકે અધ્યયન અને સહઅધ્યયન.</li>
+        <li>બાળક સમસ્યા ઉકેલનાર અને વૈજ્ઞાનિક શોધક તરીકે: પ્રશ્ન પૂછવો, અનુમાન કરવું, તપાસવું, પુરાવા જોવું અને નિષ્કર્ષ કાઢવો.</li>
+        <li>બાળકોની વૈકલ્પિક સંકલ્પનાઓ અને ભૂલોને શીખવાની પ્રક્રિયાનો ભાગ માનવો; ભૂલનું કારણ શોધીને યોગ્ય માર્ગદર્શન આપવું.</li>
+        <li>જ્ઞાનાત્મક પ્રક્રિયા અને સંવેગો (લાગણીઓ) વચ્ચેનો સંબંધ; આત્મવિશ્વાસ, ચિંતા અને વર્ગખંડનું વાતાવરણ.</li>
+        <li>પ્રેરણાના પ્રકારો, રસ, પ્રશંસા, પ્રતિસાદ અને સ્વપ્રેરણા; વ્યક્તિગત તથા પર્યાવરણીય પરિબળોનો અધ્યયન પર પ્રભાવ.</li>
+        <li>પ્રવૃત્તિ આધારિત, અનુભવ આધારિત, સહકારી અને શોધ આધારિત શિક્ષણ; શિક્ષક માર્ગદર્શક તરીકે.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="syllabus-item">
+    <summary>વિભાગ ૨ — ગુજરાતી ભાષા (૩૦ ગુણ)</summary>
+    <div class="syllabus-body">
+      <h4>અ. ભાષા સમજ અને અધિગ્રહણ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li>અપરીચિત પાઠ્યના બે ભાગ: એક ગદ્યખંડ અથવા નાટ્યખંડ અને એક કાવ્ય. ગદ્ય સાહિત્યિક, વૈજ્ઞાનિક, વર્ણનાત્મક અથવા વિચારાત્મક હોઈ શકે છે.</li>
+        <li>ગદ્ય અને કાવ્યનો મુખ્ય વિચાર, યોગ્ય શીર્ષક, સારાંશ, લેખકનો આશય, ભાવ, પાત્રો અને ઘટનાક્રમ સમજવો.</li>
+        <li>સ્પષ્ટ માહિતી શોધવી, અનુમાન કરવું, સંદર્ભ પરથી શબ્દનો અર્થ સમજવો, તાર્કિક નિષ્કર્ષ કાઢવો અને અભિપ્રાય ઓળખવો.</li>
+        <li>વાક્યરચના, શબ્દપ્રયોગ, ભાષાની યોગ્યતા અને પાઠમાં આવેલા વ્યાકરણના ઉપયોગને સમજવો.</li>
+        <li>શ્રવણ અને કથન કૌશલ્યનું ભાષા શિક્ષણમાં મહત્ત્વ; સંવાદ, પ્રશ્નોત્તરી, ચર્ચા અને વર્ગખંડની આંતરક્રિયા.</li>
+        <li>ધોરણ ૧ થી ૫ના ગુજરાતી ભાષા અભ્યાસક્રમના મૂળભૂત મુદ્દાઓ; પ્રશ્નોની સમજણ અને કઠિનતાનું સ્તર માધ્યમિક કક્ષાને અનુરૂપ હોઈ શકે છે.</li>
+      </ul>
+      <h4>બ. ગુજરાતી ભાષા શિક્ષણની પદ્ધતિ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li><strong>ભાષા અધિગમણ અને સંપાદન:</strong> બાળક સ્વાભાવિક રીતે ભાષા કેવી રીતે શીખે છે; ઘર અને શાળાના ભાષિક વાતાવરણની અસર.</li>
+        <li><strong>ભાષા શિક્ષણના સિદ્ધાંતો:</strong> સરળથી જટિલ, જાણીતા પરથી અજાણ્યા તરફ, અનુભવ અને સંવાદ આધારિત શિક્ષણ.</li>
+        <li><strong>વ્યાકરણની ભૂમિકા:</strong> વ્યાકરણને અલગથી યાદ કરાવવાને બદલે વાંચન, લેખન અને બોલવામાં યોગ્ય સંદર્ભે વાપરવું; વિચારને મૌખિક અને લેખિત રીતે વ્યક્ત કરવો.</li>
+        <li><strong>ચાર ભાષાકૌશલ્યો:</strong> શ્રવણ, કથન, વાંચન અને લેખન; તેમનો પરસ્પર સંબંધ તથા દરેક કૌશલ્ય વિકસાવવાની પ્રવૃત્તિઓ.</li>
+        <li><strong>ભાષાકીય પડકારો:</strong> ઉચ્ચાર, જોડણી, શબ્દભંડોળ, વાક્યરચના, વાંચનપ્રવાહ, સમજણ અને અભિવ્યક્તિમાં થતી મુશ્કેલીઓ તથા સામાન્ય ભૂલો.</li>
+        <li><strong>મૂલ્યાંકન:</strong> મૌખિક જવાબ, વાંચન, લખાણ, સાંભળીને સમજવું, વાર્તા કહેવી અને દૈનિક ભાષા વપરાશ દ્વારા પ્રગતિ માપવી.</li>
+        <li><strong>અધ્યયન-અધ્યાપન સામગ્રી:</strong> પાઠ્યપુસ્તક, ચિત્રો, વાર્તાકાર્ડ, શબ્દકાર્ડ, બાળસાહિત્ય, ઑડિયો-વિડિયો અને સ્થાનિક ભાષિક સ્ત્રોતો.</li>
+        <li><strong>ઉપચારાત્મક શિક્ષણ:</strong> ભૂલનું નિદાન, વ્યક્તિગત અભ્યાસ, પુનરાવર્તન, વાંચન-લેખનનો વધારાનો અભ્યાસ અને પ્રોત્સાહક પ્રતિસાદ.</li>
+      </ul>
+      <p><strong>તૈયારી માટે જોડાયેલા ભાષા મુદ્દા:</strong> ગુજરાતી લિપિ અને જોડણી, શબ્દભંડોળ, સમાનાર્થી-વિરુદ્ધાર્થી, રૂઢિપ્રયોગ, કહેવતો, સંધિ-સમાસ, શબ્દભેદ, કાળ, વાક્યના પ્રકાર અને વિરામચિહ્નોનો સંદર્ભ સાથે અભ્યાસ કરવો.</p>
+    </div>
+  </details>
+
+  <details class="syllabus-item">
+    <summary>વિભાગ ૩ — અંગ્રેજી ભાષા (૩૦ ગુણ)</summary>
+    <div class="syllabus-body">
+      <h4>અ. ભાષા સમજ અને અધિગ્રહણ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li>અપરીચિત અંગ્રેજી પાઠ્યના બે ભાગ: એક ગદ્ય અથવા નાટ્યખંડ અને એક કાવ્ય.</li>
+        <li>પાઠનો મુખ્ય વિચાર, યોગ્ય શીર્ષક, ચોક્કસ માહિતી, ભાવ, હેતુ અને ઘટનાક્રમ સમજવો.</li>
+        <li>અનુમાન, સંદર્ભ પરથી શબ્દનો અર્થ, તાર્કિક અર્થઘટન, વાક્યનો અર્થ અને નિષ્કર્ષ કાઢવાની કસરત.</li>
+        <li>ભાષાના મૂળભૂત તત્ત્વો, સંવાદ, અર્થગ્રહણ અને વિદ્યાર્થી સાથેના વર્ગખંડ વ્યવહારને સમજતા પ્રશ્નો.</li>
+        <li>શ્રવણ અને કથન કૌશલ્યનું મહત્ત્વ તથા ભાષા શીખવામાં તેનો ઉપયોગ.</li>
+        <li>ધોરણ ૧ થી ૫ના અંગ્રેજી વિષયના અભ્યાસક્રમને આધાર રાખીને, સમજણ અને કઠિનતાનું સ્તર માધ્યમિક કક્ષાને અનુરૂપ હોઈ શકે છે.</li>
+      </ul>
+      <h4>બ. અંગ્રેજી ભાષા શિક્ષણની પદ્ધતિ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li>ભાષા અધિગમણ અને સંપાદન વચ્ચેનો તફાવત; બાળકના ભાષા વિકાસમાં વાતાવરણ અને સંવાદની ભૂમિકા.</li>
+        <li>ભાષા શિક્ષણના સિદ્ધાંતો અને નાના બાળકોને અંગ્રેજી શીખવવાની ઉંમર-અનુરૂપ રીતો.</li>
+        <li>વ્યાકરણની ભૂમિકા અને તેને વાસ્તવિક ભાષા વપરાશમાં સંદર્ભ સાથે શીખવવું.</li>
+        <li>શ્રવણ, કથન, વાંચન અને લેખન — ચારેય કૌશલ્યો માટે યોગ્ય પ્રવૃત્તિ, રમત, વાર્તા, ગીત અને સંવાદ.</li>
+        <li>ઉચ્ચાર, શબ્દભંડોળ, વાંચનસમજ, જોડણી, વાક્ય રચના અને ભાષાની ભૂલોમાં આવતી મુશ્કેલીઓ.</li>
+        <li>ભાષાકૌશલ્યોનું મૂલ્યાંકન: મૌખિક કાર્ય, વાંચન, લેખન, સાંભળીને જવાબ, પોર્ટફોલિયો અને નિરીક્ષણ.</li>
+        <li>શૈક્ષણિક સામગ્રી: પાઠ્યપુસ્તક, ચિત્રપુસ્તક, ફ્લેશકાર્ડ, ઑડિયો, વિડિયો, રમતો અને વર્ગખંડ બહારના ભાષિક સ્રોતો.</li>
+        <li>ઉપચારાત્મક શિક્ષણ: બાળકની ચોક્કસ મુશ્કેલી ઓળખવી, સરળ ઉદાહરણો, પુનરાવર્તન અને વ્યક્તિગત પ્રતિસાદ.</li>
+      </ul>
+      <p><strong>તૈયારી માટે જોડાયેલા ભાષા મુદ્દા:</strong> શબ્દભેદ, મૂળભૂત કાળ, articles, prepositions, conjunctions, subject-verb agreement, સરળ sentence structure, vocabulary અને વાંચન આધારિત grammarનો અભ્યાસ કરવો.</p>
+    </div>
+  </details>
+
+  <details class="syllabus-item">
+    <summary>વિભાગ ૪ — ગણિત (૩૦ ગુણ)</summary>
+    <div class="syllabus-body">
+      <h4>અ. વિષયવસ્તુ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li><strong>સંખ્યા જ્ઞાન:</strong> ગણતરી, સ્થાનકિંમત, મોટી-નાની સંખ્યા, સંખ્યા ક્રમ, પૂર્વવર્તી-અનુવર્તી, સમ-વિસમ અને સંખ્યાની રચના.</li>
+        <li><strong>મૂળભૂત ક્રિયાઓ:</strong> સરવાળો, બાદબાકી, ગુણાકાર, ભાગાકાર, અંદાજ, માનસિક ગણતરી અને દૈનિક જીવનના શબ્દપ્રશ્નો.</li>
+        <li><strong>અપૂર્ણાંક અને દશાંશ:</strong> અપૂર્ણાંકનો અર્થ, સમકક્ષ અપૂર્ણાંક, સરખામણી, સરળ ક્રિયાઓ અને દશાંશનો રોજિંદા ઉપયોગ.</li>
+        <li><strong>અવયવ અને ગુણાક:</strong> અવયવ, ગુણાક, સામાન્ય અવયવ/ગુણાક અને સંખ્યાઓ વચ્ચેના સંબંધ.</li>
+        <li><strong>પેટર્ન અને તર્ક:</strong> સંખ્યાક્રમ, આકારના નમૂના, નિયમ શોધવો, અનુમાન અને સમસ્યા ઉકેલવાની રીત.</li>
+        <li><strong>ભૂમિતિ:</strong> બિંદુ, રેખા, રેખાખંડ, કિરણ, ખૂણા, ત્રિકોણ, ચતુષ્કોણ, વર્તુળ, સમમિતિ અને આસપાસના આકારો.</li>
+        <li><strong>માપન:</strong> લંબાઈ, વજન, ક્ષમતા, સમય, કેલેન્ડર, એકમોનું રૂપાંતર અને યોગ્ય સાધન પસંદ કરવું.</li>
+        <li><strong>નાણાં અને વ્યવહાર:</strong> નોટ-સિક્કા, કિંમત, બાકી રકમ, ખરીદી-વેચાણ અને સરળ હિસાબ.</li>
+        <li><strong>પરિમિતિ અને ક્ષેત્રફળ:</strong> સરળ આકારોની બાજુઓ, પરિમિતિ અને ક્ષેત્રફળની મૂળભૂત સમજ.</li>
+        <li><strong>માહિતીનું નિરૂપણ:</strong> ચિત્રઆલેખ, કોષ્ટક, સરળ આલેખ વાંચવો, માહિતીની સરખામણી અને તારણ કાઢવું.</li>
+        <li>મુખ્ય આધાર ધોરણ ૧ થી ૫નો ગણિત અભ્યાસક્રમ છે; પ્રશ્નોની મુશ્કેલી અને સંબંધ માધ્યમિક કક્ષા સુધી જઈ શકે છે.</li>
+      </ul>
+      <h4>બ. ગણિત શિક્ષણની પદ્ધતિ — ૧૫ પ્રશ્નો / ૧૫ ગુણ</h4>
+      <ul>
+        <li><strong>ગણિતનું સ્વરૂપ:</strong> તાર્કિકતા, ચોકસાઈ, ક્રમબદ્ધ વિચાર, પેટર્ન અને સમસ્યા ઉકેલવાની ક્ષમતા.</li>
+        <li><strong>બાળકોની વિચારપ્રક્રિયા:</strong> બાળક ગણિતીય ખ્યાલ કેવી રીતે બનાવે છે, પોતાની રીત શોધે છે અને ઉકેલ સમજાવે છે.</li>
+        <li><strong>અભ્યાસક્રમમાં ગણિતનું સ્થાન:</strong> દૈનિક જીવન, અન્ય વિષયો અને આગળના અભ્યાસ સાથે ગણિતનો સંબંધ.</li>
+        <li><strong>શિક્ષણ પદ્ધતિઓ:</strong> મૂર્ત વસ્તુઓથી ચિત્ર અને પછી અમૂર્ત સંકલ્પના તરફ; પ્રવૃત્તિ, રમત, પ્રયોગ, જૂથકાર્ય, ચર્ચા અને શોધ આધારિત શિક્ષણ.</li>
+        <li><strong>વર્ગખંડની ભાષા:</strong> ગણિતીય શબ્દો, પ્રતીકો અને પ્રશ્નને બાળક સમજી શકે તેવી ભાષામાં રજૂ કરવો.</li>
+        <li><strong>મૂલ્યાંકન:</strong> ઔપચારિક અને અનૌપચારિક મૂલ્યાંકન, મૌખિક સમજ, કાર્યપત્રક, અવલોકન અને સમસ્યા ઉકેલવાની રીત તપાસવી.</li>
+        <li><strong>અધ્યાપનની સમસ્યાઓ:</strong> ગણિતનો ભય, સંકલ્પના ન સમજવી, એકમમાં ગૂંચવણ અને ગણતરીની ભૂલો.</li>
+        <li><strong>ભૂલો અને ઉપચાર:</strong> ભૂલનું કારણ શોધવું, વૈકલ્પિક ઉદાહરણો, સામગ્રી આધારિત સમજણ અને ધીમે ધીમે અભ્યાસ દ્વારા સુધારો.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="syllabus-item">
+    <summary>વિભાગ ૫ — પર્યાવરણ, સામાન્ય જ્ઞાન અને શિક્ષણના વર્તમાન પ્રવાહો (૩૦ ગુણ)</summary>
+    <div class="syllabus-body">
+      <h4>અ. પર્યાવરણ વિષય અને પદ્ધતિશાસ્ત્ર — ૨૦ પ્રશ્નો / ૨૦ ગુણ</h4>
+      <p><strong>વિષયવસ્તુ — ૧૦ પ્રશ્નો / ૧૦ ગુણ</strong></p>
+      <ul>
+        <li><strong>કુટુંબ અને સમાજ:</strong> કુટુંબના પ્રકાર, સંબંધો, પડોશ, સમુદાય, વ્યવસાય, તહેવારો અને સામાજિક સહજીવન.</li>
+        <li><strong>ખોરાક અને આરોગ્ય:</strong> ખોરાકના સ્ત્રોત, પોષક તત્ત્વો, સંતુલિત આહાર, સ્વચ્છતા, રોગોથી બચાવ અને આરોગ્યપ્રદ ટેવો.</li>
+        <li><strong>પાણી:</strong> પાણીના સ્ત્રોત, ઉપયોગ, જળચક્રની મૂળભૂત સમજ, શુદ્ધિકરણ, બચત અને સંરક્ષણ.</li>
+        <li><strong>આવાસ:</strong> રહેઠાણના પ્રકાર, સ્થાનિક હવામાન પ્રમાણે ઘરની રચના, સ્વચ્છ અને સુરક્ષિત ઘર.</li>
+        <li><strong>પ્રવાસ અને પરિવહન:</strong> વાહનો, માર્ગ સલામતી, દિશા, નકશાની પ્રાથમિક સમજ અને સ્થળો વચ્ચેનો સંબંધ.</li>
+        <li><strong>છોડ અને પ્રાણીઓ:</strong> છોડના ભાગો અને ઉપયોગ, વૃદ્ધિ, પ્રાણીઓના રહેઠાણ, ખોરાક, અનુકૂલન અને જૈવવિવિધતા.</li>
+        <li><strong>માનવ શરીર અને આસપાસનું પર્યાવરણ:</strong> ઇન્દ્રિયો, શરીરની સંભાળ, સ્વચ્છતા, આરોગ્ય અને સલામતી.</li>
+        <li><strong>કુદરતી સંસાધનો:</strong> જમીન, હવા, પાણી, વન, ઊર્જા, પ્રદૂષણ અને સંસાધનોનો જવાબદારીપૂર્વક ઉપયોગ.</li>
+        <li><strong>સ્થાનિક પર્યાવરણ:</strong> ગુજરાતના સ્થાનિક જીવન, ખેતી, ઋતુઓ, પાણીના પ્રશ્નો, લોકજીવન અને કુદરતી પરિસ્થિતિઓના ઉદાહરણો.</li>
+        <li>આ વિભાગ માટે ધોરણ ૧ થી ૫ના પર્યાવરણ અભ્યાસના પાઠ્યક્રમને આધાર બનાવવો; સંકલ્પનાઓને ઊંડાણથી સમજવી.</li>
+      </ul>
+      <p><strong>પદ્ધતિશાસ્ત્ર — ૧૦ પ્રશ્નો / ૧૦ ગુણ</strong></p>
+      <ul>
+        <li>પર્યાવરણ અભ્યાસ (EVS)ની સંકલ્પના, વ્યાપ, હેતુ અને બાળકના રોજિંદા જીવનમાં તેનું મહત્ત્વ.</li>
+        <li>પર્યાવરણ શિક્ષણ અને પર્યાવરણ વિષય વચ્ચેનો સંબંધ; વિજ્ઞાન અને સામાજિક વિજ્ઞાન સાથેનો જોડાણ આધારિત અભ્યાસ.</li>
+        <li>અધ્યયનના સિદ્ધાંતો અને બાળકના પૂર્વઅનુભવથી નવી સંકલ્પના વિકસાવવી.</li>
+        <li>વિષય રજૂ કરવાની રીતો: અવલોકન, સ્થળ મુલાકાત, ચર્ચા, પ્રશ્નોત્તરી, વાર્તા, નકશો અને સ્થાનિક ઉદાહરણો.</li>
+        <li>પ્રવૃત્તિઓ, પ્રયોગો અને પ્રાયોગિક કાર્ય; સરળ તપાસ, માહિતી એકત્રિત કરવી અને નોંધ લખવી.</li>
+        <li>શિક્ષણ સહાયક સામગ્રી: ચિત્રો, નમૂનાઓ, નકશા, વાસ્તવિક વસ્તુઓ, વિડિયો અને સ્થાનિક સંસાધનો.</li>
+        <li>સતત અને સર્વગ્રાહી મૂલ્યાંકન (CCE), પ્રોજેક્ટ, અવલોકન, કાર્યઆધારિત ચકાસણી અને ચર્ચામાં ભાગીદારી.</li>
+        <li>EVS શિક્ષણમાં આવતી સમસ્યાઓ અને બાળકની ગેરસમજ દૂર કરવાની રીતો.</li>
+      </ul>
+      <h4>બ. સામાન્ય જ્ઞાન, તર્કશક્તિ, શિક્ષક અભિરુચિ અને માહિતી વિશ્લેષણ — ૫ પ્રશ્નો / ૫ ગુણ</h4>
+      <ul>
+        <li>સામાન્ય જ્ઞાન અને આસપાસની મહત્વપૂર્ણ ઘટનાઓની મૂળભૂત જાણકારી.</li>
+        <li>તાર્કિક ક્ષમતા: સમાનતા, વર્ગીકરણ, ક્રમ, સંબંધ ઓળખવો, સરળ શ્રેણી અને નિષ્કર્ષ.</li>
+        <li>શિક્ષક અભિરુચિ: વર્ગખંડની પરિસ્થિતિમાં યોગ્ય નિર્ણય, બાળક સાથે સંવેદનશીલ વર્તન, સહકાર અને ન્યાયપૂર્ણ વલણ.</li>
+        <li>માહિતી વિશ્લેષણ: કોષ્ટક, આલેખ અથવા આપેલી માહિતી વાંચવી, સરખામણી કરવી અને સરળ તારણ કાઢવું.</li>
+      </ul>
+      <h4>ક. શિક્ષણના વર્તમાન પ્રવાહો — ૫ પ્રશ્નો / ૫ ગુણ</h4>
+      <ul>
+        <li>શાળાશિક્ષણની નવીન પહેલ, ગુણવત્તાયુક્ત શિક્ષણ અને પાયાની સાક્ષરતા તથા અંકજ્ઞાન (FLN).</li>
+        <li>રાષ્ટ્રીય શિક્ષણ નીતિ ૨૦૨૦ના શાળાશિક્ષણ સંબંધિત મુખ્ય વિચારો.</li>
+        <li>મફત અને ફરજિયાત શિક્ષણનો અધિકાર અધિનિયમ, ૨૦૦૯ (RTE)ના મુખ્ય હેતુઓ અને બાળકોના અધિકારો.</li>
+        <li>સમગ્ર શિક્ષા, નિપુણ ભારત, PM POSHAN, DIKSHA અને ડિજિટલ શિક્ષણ જેવી શિક્ષણ પહેલોની મૂળભૂત સમજ.</li>
+        <li>ગુજરાતમાં પ્રાથમિક શિક્ષણની ગુણવત્તા, શિક્ષક તાલીમ, શૈક્ષણિક મૂલ્યાંકન અને સમાવેશી શિક્ષણ સંબંધિત પ્રવાહો.</li>
+      </ul>
+      <p class="muted">વર્તમાન પ્રવાહો માટે પરીક્ષા પહેલાં અધિકૃત સરકારી પરિપત્રો અને તાજેતરની શિક્ષણ સંબંધિત માહિતી ફરી તપાસવી.</p>
+    </div>
+  </details>
+
+  <div class="syllabus-note"><strong>તૈયારીની રીત:</strong> દરેક વિભાગમાં પહેલા સંકલ્પના સમજો, પછી ધોરણ ૧ થી ૫ના પાઠ્યપુસ્તકમાંથી ઉદાહરણો ઉકેલો, પદ્ધતિશાસ્ત્રના પ્રશ્નોનો અભ્યાસ કરો અને અંતે સમયમર્યાદામાં મૉક ટેસ્ટ આપો. માત્ર વ્યાખ્યાઓ યાદ ન રાખતા — વર્ગખંડમાં કઈ પરિસ્થિતિમાં કઈ રીત યોગ્ય છે તે સમજવું.</div>
+  <div class="source-links">
+    <a href="https://sebexam.org/AdvertiseFiles/2025/pre-1111-711-k001_102025.pdf" target="_blank" rel="noopener">ગુજરાત સરકારનો વિગતવાર અભ્યાસક્રમ ઠરાવ (PDF)</a>
+    <a href="https://www.sebexam.org/AdvertiseFiles/2025/%E0%AA%B6%E0%AA%BF%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%95%20%E0%AA%AF%E0%AB%8B%E0%AA%97%E0%AB%8D%E0%AA%AF%E0%AA%A4%E0%AA%BE%20%E0%AA%95%E0%AA%B8%E0%AB%8B%E0%AA%9F%E0%AB%80-i%20%28tet-i%29-2025%20%E0%AA%9C%E0%AA%BE%E0%AA%B9%E0%AB%87%E0%AA%B0%E0%AA%A8%E0%AA%BE%E0%AA%AE%E0%AB%81%E0%ં_102025.pdf" target="_blank" rel="noopener">SEB TET-I-2025 જાહેરનામું (PDF)</a>
+  </div>
+</section>
+<section class="stats"><div class="card stat"><span class="muted">કુલ પ્રગતિ</span><strong id="percent">0%</strong><div class="bar"><i id="overallbar" style="width:0%"></i></div></div><div class="card stat"><span class="muted">પૂર્ણ કરેલા મુદ્દા</span><strong id="completed">0 / 0</strong></div><div class="card stat"><span class="muted">બાકી મુદ્દા</span><strong id="remaining">0</strong></div></section>
 <div class="section-title"><h2>વિષય પસંદ કરો</h2><span class="muted">દરેક વિષય 30 ગુણ</span></div><section class="subjects" id="subjects"></section>
 <div class="section-title"><h2 id="topicTitle">અભ્યાસના મુદ્દા</h2><span id="subjectProgress" class="muted"></span></div>
 <div class="toolbar"><input id="search" type="search" placeholder="વિષય અથવા મુદ્દો શોધો…"><select id="filter"><option value="all">બધા મુદ્દા</option><option value="todo">બાકી</option><option value="done">પૂર્ણ</option></select><div class="actions"><button id="export">બેકઅપ</button><button id="import">રીસ્ટોર</button><input id="file" type="file" accept="application/json" hidden></div></div>
@@ -24,10 +271,21 @@ const KEY="tet1-progress-v1";let saved={};try{saved=JSON.parse(localStorage.getI
 let active="cdp";const all=()=>subjects.flatMap(s=>s.topics.map((t,i)=>s.id+"-"+i));const isDone=id=>saved[id]===true;
 function totals(){let ids=all(),done=ids.filter(isDone).length,p=ids.length?Math.round(done/ids.length*100):0;document.querySelector("#percent").textContent=p+"%";document.querySelector("#overallbar").style.width=p+"%";document.querySelector("#completed").textContent=done+" / "+ids.length;document.querySelector("#remaining").textContent=ids.length-done}
 function renderSubjects(){document.querySelector("#subjects").innerHTML=subjects.map(s=>{let n=s.topics.filter((_,i)=>isDone(s.id+"-"+i)).length,p=Math.round(n/s.topics.length*100);return '<button class="card subject '+(active===s.id?'active':'')+'" data-id="'+s.id+'"><h3>'+s.name+'</h3><span class="muted">'+n+' / '+s.topics.length+' પૂર્ણ · 30 ગુણ</span><div class="bar"><i style="width:'+p+'%"></i></div></button>'}).join("");document.querySelectorAll(".subject").forEach(b=>b.onclick=()=>{active=b.dataset.id;render()})}
-function renderTopics(){let s=subjects.find(x=>x.id===active),q=document.querySelector("#search").value.trim().toLowerCase(),f=document.querySelector("#filter").value;document.querySelector("#topicTitle").textContent=s.name;let done=s.topics.filter((_,i)=>isDone(s.id+"-"+i)).length;document.querySelector("#subjectProgress").textContent=done+"/"+s.topics.length+" પૂર્ણ";let rows=s.topics.map((t,i)=>({t,id:s.id+"-"+i,done:isDone(s.id+"-"+i)})).filter(x=>(!q||(x.t+" "+s.name).toLowerCase().includes(q))&&(f==="all"||(f==="done"?x.done:!x.done)));document.querySelector("#topics").innerHTML=rows.length?rows.map(x=>'<div class="topic '+(x.done?'done':'')+'"><input type="checkbox" id="'+x.id+'" '+(x.done?'checked':'')+'><label for="'+x.id+'">'+x.t+'</label></div>').join():'<div class="empty">આ ફિલ્ટરમાં કોઈ મુદ્દો મળ્યો નથી.</div>';rows.forEach(x=>document.getElementById(x.id).onchange=e=>{saved[x.id]=e.target.checked;localStorage.setItem(KEY,JSON.stringify(saved));render()})}
+function renderTopics(){let s=subjects.find(x=>x.id===active),q=document.querySelector("#search").value.trim().toLowerCase(),f=document.querySelector("#filter").value;document.querySelector("#topicTitle").textContent=s.name;let done=s.topics.filter((_,i)=>isDone(s.id+"-"+i)).length;document.querySelector("#subjectProgress").textContent=done+"/"+s.topics.length+" પૂર્ણ";let rows=s.topics.map((t,i)=>({t,id:s.id+"-"+i,done:isDone(s.id+"-"+i)})).filter(x=>(!q||(x.t+" "+s.name).toLowerCase().includes(q))&&(f==="all"||(f==="done"?x.done:!x.done)));document.querySelector("#topics").innerHTML=rows.length?rows.map(x=>'<div class="topic '+(x.done?'done':'')+'"><input type="checkbox" id="'+x.id+'" '+(x.done?'checked':'')+'><label for="'+x.id+'">'+x.t+'</label></div>').join(""):'<div class="empty">આ ફિલ્ટરમાં કોઈ મુદ્દો મળ્યો નથી.</div>';rows.forEach(x=>document.getElementById(x.id).onchange=e=>{saved[x.id]=e.target.checked;localStorage.setItem(KEY,JSON.stringify(saved));render()})}
 function render(){totals();renderSubjects();renderTopics()}
 document.querySelector("#search").oninput=renderTopics;document.querySelector("#filter").onchange=renderTopics;
 document.querySelector("#export").onclick=()=>{let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(saved,null,2)],{type:"application/json"}));a.href=u;a.download="tet1-progress-backup.json";a.click();URL.revokeObjectURL(u)};
 document.querySelector("#import").onclick=()=>document.querySelector("#file").click();document.querySelector("#file").onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(!d||typeof d!=="object"||Array.isArray(d))throw 0;saved=Object.fromEntries(Object.entries(d).filter(([k,v])=>all().includes(k)&&v===true));localStorage.setItem(KEY,JSON.stringify(saved));render();alert("બેકઅપ સફળતાપૂર્વક રીસ્ટોર થયું.")}catch{alert("આ બેકઅપ ફાઇલ માન્ય નથી.")}e.target.value=""};
+
+const syllabusPanel=document.querySelector("#syllabusPanel");
+const syllabusToggle=document.querySelector("#syllabusToggle");
+function setSyllabusVisible(visible){
+  syllabusPanel.hidden=!visible;
+  syllabusToggle.setAttribute("aria-expanded",String(visible));
+  if(visible){syllabusPanel.scrollIntoView({behavior:"smooth",block:"start"});}
+}
+syllabusToggle.onclick=()=>setSyllabusVisible(syllabusPanel.hidden);
+document.querySelector("#closeSyllabus").onclick=()=>setSyllabusVisible(false);
+
 render();
 </script></body></html>
