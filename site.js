@@ -19,9 +19,13 @@
     setMenuOpen(menu.hidden);
   });
 
-  // Do not hide the menu from an anchor's click handler. Hiding an anchor's
-  // parent during the same click can cancel its default navigation on mobile.
-  // Let the browser follow the link normally.
+  // Allow the browser to activate the link first, then dismiss the menu.
+  // This preserves normal navigation, including on mobile browsers.
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      window.setTimeout(() => setMenuOpen(false), 0);
+    });
+  });
 
   document.addEventListener("click", (event) => {
     if (menu.hidden) return;
