@@ -1,0 +1,46 @@
+# Gujarat TET-1 અભ્યાસ સાથી
+
+> ગુજરાત રાજ્યની TET-I (ધોરણ 1 થી 5) પરીક્ષા માટે સ્વતંત્ર ગુજરાતી અભ્યાસ માર્ગદર્શિકા અને પ્રગતિ ચેકલિસ્ટ. આ સત્તાવાર SEB વેબસાઇટ નથી.
+
+- Canonical site: https://tet-checklist.vercel.app/
+- Primary language: Gujarati (gu-IN), with standard English examination terminology
+- Geographic scope: Gujarat, India
+- Website creator: Nitrajsinh Solanki (website creator; not presented as a government authority or examination expert)
+- Last site information review recorded: 14 November 2026
+
+## Main pages
+
+- Home and study checklist: https://tet-checklist.vercel.app/
+- Detailed TET-I syllabus: https://tet-checklist.vercel.app/syllabus.html
+- Paper pattern and eligibility: https://tet-checklist.vercel.app/paper.html
+- SEB updates and recruitment timeline: https://tet-checklist.vercel.app/updates.html
+- Historical result statistics: https://tet-checklist.vercel.app/results.html
+- Preparation strategy: https://tet-checklist.vercel.app/strategy.html
+- Official documents and source links: https://tet-checklist.vercel.app/sources.html
+
+## Key exam context
+
+- Gujarat TET-I is for candidates seeking eligibility to teach primary classes 1 to 5.
+- The latest completed cycle documented on this site is TET-I 2025.
+- As per the TET-I 2025 published pattern, the paper had 150 multiple-choice questions for 150 marks and 120 minutes.
+- The 2025 pattern divided the paper into five 30-mark sections: Child Development and Pedagogy, Gujarati, English, Mathematics, and Environmental Studies / related listed topics.
+- These are cycle-specific details, not a promise that a future notification will retain the same pattern.
+
+## Current-notice caution
+
+- The updates page records that the SEB notice board was checked on 14 November 2026 and no new TET-I 2027 notification was found at that time.
+- This dated status can become outdated. Always check the official SEB notice board for the latest notification, dates, fees, eligibility and syllabus.
+
+## Source priority
+
+1. State Examination Board, Gujarat: https://sebexam.org/
+2. Official TET-I / TET-II resolution and syllabus document: https://sebexam.org/AdvertiseFiles/2025/pre-1111-711-k001_102025.pdf
+3. Official examination and recruitment portals linked on the sources page.
+
+Historical result figures and some recruitment timeline details are marked on the relevant pages according to the source quality available. Do not treat secondary reporting as an official rule or forecast.
+
+## Important limitations
+
+- This is an independent study aid, not a government service and not affiliated with the State Examination Board.
+- The site's checklist is a personal progress tracker. It is not an official chapter-wise marks distribution.
+- Historical cutoffs, result estimates, recruitment counts, expected dates and third-party statistics must not be presented as confirmed future outcomes.
